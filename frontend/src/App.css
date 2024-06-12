@@ -1,0 +1,49 @@
+/* App.css */
+
+
+html, body {
+  width: 100%; /* Set the width of the entire webpage */
+  height: 100vh; /* Set the height of the entire webpage to fill the viewport */
+  margin: 0; /* Remove default margin to ensure full width and height */
+  padding: 0; /* Remove default padding */
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Minimum height to fill the viewport */
+  margin: 0;
+}
+
+.container {
+  width: 800px; /* Set the width of a container element to 800 pixels */
+  height: 600px; /* Set the height of the container to 600 pixels */
+}
+
+.image {
+  max-width: 100%; /* Ensure that an image's width doesn't exceed its container width */
+  height: auto; /* Maintain the image's aspect ratio when resizing */
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Set minimum height to fill the viewport */
+}
+
+.main-content {
+  flex-grow: 1; /* Allow main content to grow and fill available space */
+  /*padding: 20px; /* Add padding as needed */
+}
+
+/* App.css */
+
+@media (max-width: 768px) {
+  /* Apply styles when the viewport width is 768 pixels or less */
+  .container {
+    width: 100%; /* Make the container full width on smaller screens */
+    height: auto; /* Allow the height to adjust based on content */
+  }
+}
+
+

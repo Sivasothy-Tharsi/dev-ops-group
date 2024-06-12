@@ -1,0 +1,61 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Lipstick",
+        "category": "Makeup",
+        "price": 10.99,
+        "description": "Long-lasting matte lipstick in various shades.",
+        "image": "https://viana.lk/wp-content/uploads/2019/10/Matte-Touch-600x600.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Lipstick",
+        "category": "Makeup",
+        "price": 8.99,
+        "description": "Volumizing mascara for dramatic lashes.",
+        "image": "https://www.deborahmilano.com/en/wp-content/uploads/2022/05/010507_rossetto_red_touch_07.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Lipstick",
+        "category": "Makeup",
+        "price": 15.99,
+        "description": "Liquid foundation for a flawless complexion.",
+        "image": "https://www.elizabetharden.co.uk/on/demandware.static/-/Sites-elizabetharden-master-catalog/default/dw850c798a/images/2104-lipcolor-lipstick-red-door-red-cream-pdp.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Lipstick",
+        "category": "Makeup",
+        "price": 15.99,
+        "description": "Liquid foundation for a flawless complexion.",
+        "image": "https://www.elizabetharden.co.uk/on/demandware.static/-/Sites-elizabetharden-master-catalog/default/dw850c798a/images/2104-lipcolor-lipstick-red-door-red-cream-pdp.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Bangle",
+        "category": "Jewellery",
+        "price": 15.99,
+        "description": "Liquid foundation for a flawless complexion.",
+        "image": "https://5.imimg.com/data5/IX/PR/HQ/SELLER-57105705/american-diamond-gold-plated-bangles-for-girls-500x500.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Bangle",
+        "category": "Jewellery",
+        "price": 15.99,
+        "description": "Liquid foundation for a flawless complexion.",
+        "image": "https://5.imimg.com/data5/BH/DE/MY-5004575/soni-art-lcd-diamond-fashionable-bridal-bangles-280221-29-500x500.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Ring",
+        "category": "Jewellery",
+        "price": 15.99,
+        "description": "Liquid foundation for a flawless complexion.",
+        "image": "https://m.media-amazon.com/images/I/51FXH97qamL.jpg"
+      }
+    ]
+  }
+  
