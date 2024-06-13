@@ -3,14 +3,14 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('sivasothy-dockerhub')
-        GIT_ACCESS_TOKEN = credentials('sivasothy-github')
+        GIT_ACCESS_TOKEN = credentials('dev-github')
     }
 
     stages {
         stage('Fetch code') {
             steps {
                 script {
-                    git credentialsId: 'sivasothy-github', url: 'https://github.com/Sivasothy-Tharsi/4232-Tharsi.git'
+                    git credentialsId: 'dev-github', url: 'https://github.com/Sivasothy-Tharsi/dev-ops-group.git'
                 }
             }
         }
