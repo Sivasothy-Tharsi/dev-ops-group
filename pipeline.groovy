@@ -61,9 +61,19 @@ pipeline {
 
         stage('Run Containers') {
             steps {
-                script {
-                    sh 'docker-compose -f docker-compose.yml up -d'
-                }
+                // Stop and remove existing containers if any
+                sh '''
+                    docker rm -f backend || true
+                    docker rm -f frontend || true
+                '''
+                // Run backend container
+                sh '''
+                    docker run -d --name backend -p 5000:5000 sivasothytharsi/backend:$BUILD_NUMBER
+                '''
+                // Run frontend container
+                sh '''
+                    docker run -d --name frontend -p 3000:3000 sivasothytharsi/frontend:$BUILD_NUMBER
+                '''
             }
         }
     }
