@@ -5,7 +5,7 @@ pipeline {
         stage('SCM checkout') {
             steps {
                 retry(3) {
-                    checkout scmGit(branches: [[name: '*/frontend']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SupunTJ/MERN-app-frontend-dockerizing.git']])
+                    checkout scmGit(branches: [[name: '*/frontend']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sivasothy-Tharsi/dev-ops-group']])
                 }
             }
         }
