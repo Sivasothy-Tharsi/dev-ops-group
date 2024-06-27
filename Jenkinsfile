@@ -12,7 +12,8 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'sudo docker build -t Group47/frontend-app-image .'
+                    sh echo "583864" | sudo -S docker build -t Group47/frontend-app-image .
+
                 }
             }
         }
