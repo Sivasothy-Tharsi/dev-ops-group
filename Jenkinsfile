@@ -13,7 +13,7 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'sudo_password', variable: 'SUDO_PASSWORD')]) {
                     script {
-                        sh 'echo "$SUDO_PASSWORD" | sudo -S docker build -t Group47/frontend-app-image .'
+                        sh 'echo "$SUDO_PASSWORD" | sudo -S docker build -t group47/frontend-app-image .'
                     }
                 }
             }
@@ -23,10 +23,10 @@ pipeline {
                 withCredentials([string(credentialsId: 'sudo_password', variable: 'SUDO_PASSWORD')]) {
                     script {
                         // Stop any running containers with the same name
-                        sh 'sudo docker stop $(sudo docker ps -q --filter "name=Group47/frontend-app-container") || true'
-                        sh 'sudo docker rm $(sudo docker ps -a -q --filter "name=Group47/frontend-app-container") || true'
+                        sh 'sudo docker stop group47-frontend-app-container || true'
+                        sh 'sudo docker rm group47-frontend-app-container || true'
                         // Run the new container
-                        sh 'echo "$SUDO_PASSWORD" | sudo -S docker run -d -p 3003:3000 --name Group47/frontend-app-container Group47/frontend-app-image'
+                        sh 'echo "$SUDO_PASSWORD" | sudo -S docker run -d -p 3003:3000 --name group47-frontend-app-container group47/frontend-app-image'
                     }
                 }
             }
