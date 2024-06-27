@@ -12,7 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t Group47/server-app-image .'
+                    sh 'docker build -t group47/backend-app-image .'
                 }
             }
         }
@@ -22,7 +22,13 @@ pipeline {
                     // Stop any running containers with the same name
                     
                     // Run the new container
-                    sh 'docker run -d -p 3001:3001 Group47/server-app-image'
+                    // sh 'docker run -d -p 3002:3001 Group47/server-app-image'
+
+                    // Stop any running containers with the same name
+                    sh 'docker stop group47-backend-app-container || true'
+                    sh 'docker rm group47-backend-app-container || true'
+                    // Run the new container
+                    sh 'docker run -d -p 3002:3001 --name group47-backend-app-container group47/backend-app-image'
                 }
             }
         }
