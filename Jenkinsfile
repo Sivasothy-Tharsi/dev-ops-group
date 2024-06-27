@@ -32,6 +32,20 @@ pipeline {
                 sh 'docker ps'
             }
         }
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'dockerhub_password', variable: 'Dockerhub')]) {
+                    script {
+                        bat "docker login -u umeshgayashan -p %Dockerhub%"
+                    }
+                }
+            }
+        }
+        stage('Push Image') {
+            steps {
+                bat 'docker push umeshgayashan/frontend-app-image'
+            }
+        }
     }
 
     post {
