@@ -12,8 +12,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh echo "583864" | sudo -S docker build -t Group47/frontend-app-image .
-
+                    sh 'echo "583864" | sudo -S docker build -t Group47/frontend-app-image .'
                 }
             }
         }
@@ -21,9 +20,10 @@ pipeline {
             steps {
                 script {
                     // Stop any running containers with the same name
-                    
+                    sh 'sudo docker stop $(sudo docker ps -q --filter "name=Group47/frontend-app-container") || true'
+                    sh 'sudo docker rm $(sudo docker ps -a -q --filter "name=Group47/frontend-app-container") || true'
                     // Run the new container
-                    sh 'sudo docker run -d -p 3003:3000 Group47/frontend-app-image'
+                    sh 'echo "583864" | sudo -S docker run -d -p 3003:3000 --name Group47/frontend-app-container Group47/frontend-app-image'
                 }
             }
         }
