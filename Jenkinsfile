@@ -47,6 +47,7 @@ pipeline {
         }
         stage('Push Image') {
             steps {
+                echo 'Pushing Docker image to Docker Hub...'
                 sh 'docker push umeshgayashan/frontend-app-image'
             }
         }
