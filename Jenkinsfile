@@ -27,7 +27,7 @@ pipeline {
                     sh 'docker stop umeshgayashan-frontend-app-image-container || true'
                     sh 'docker rm umeshgayashan-frontend-app-image-container || true'
                     // Run the new container
-                    sh 'docker run -d -p 3003:3000 --name umeshgayashan-frontend-app-image-container umeshgayashan/frontend-app-image'
+                    sh 'docker run -d -p 3003:3001 --name umeshgayashan-frontend-app-image-container umeshgayashan/frontend-app-image'
                 }
             }
         }
