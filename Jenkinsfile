@@ -5,7 +5,11 @@ pipeline {
         stage('SCM checkout') {
             steps {
                 retry(3) {
-                    checkout scmGit(branches: [[name: '*/frontend']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sivasothy-Tharsi/dev-ops-group']])
+                    checkout scmGit(
+                        branches: [[name: '*/frontend']], 
+                        extensions: [], 
+                        userRemoteConfigs: [[url: 'https://github.com/Sivasothy-Tharsi/dev-ops-group']]
+                    )
                 }
             }
         }
@@ -36,14 +40,14 @@ pipeline {
             steps {
                 withCredentials([string(credentialsId: 'dockerhub_password', variable: 'Dockerhub')]) {
                     script {
-                        bat "docker login -u umeshgayashan -p ${Dockerhub}"
+                        sh "docker login -u umeshgayashan -p ${Dockerhub}"
                     }
                 }
             }
         }
         stage('Push Image') {
             steps {
-                bat 'docker push umeshgayashan/frontend-app-image'
+                sh 'docker push umeshgayashan/frontend-app-image'
             }
         }
     }
