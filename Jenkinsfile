@@ -23,9 +23,9 @@ pipeline {
         stage('Run Docker Container') {
             steps {
                 script {
-                    // Stop any running containers with the same name
-                    sh 'docker stop group47-frontend-app-container || true'
-                    sh 'docker rm group47-frontend-app-container || true'
+                    // Stop and remove any existing container with the same name
+                    sh 'docker stop umeshgayashan-frontend-app-image-container || true'
+                    sh 'docker rm umeshgayashan-frontend-app-image-container || true'
                     // Run the new container
                     sh 'docker run -d -p 3003:3000 --name umeshgayashan-frontend-app-image-container umeshgayashan/frontend-app-image'
                 }
@@ -47,8 +47,12 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-                echo 'Pushing Docker image to Docker Hub...'
-                sh 'docker push umeshgayashan/frontend-app-image'
+                script {
+                    retry(3) {
+                        echo 'Pushing Docker image to Docker Hub...'
+                        sh 'docker push umeshgayashan/frontend-app-image'
+                    }
+                }
             }
         }
     }
