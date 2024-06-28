@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_password')
+    }
+
     stages {
         stage('SCM checkout') {
             steps {
@@ -52,6 +56,36 @@ pipeline {
                         echo 'Pushing Docker image to Docker Hub...'
                         sh 'docker push umeshgayashan/frontend-app-image'
                     }
+                }
+            }
+        }
+        stage('Deploy to Staging') {
+            steps {
+                script {
+                    sh '''
+                    kubectl set image deployment/frontend-app frontend-app=umeshgayashan/frontend-app-image --namespace=staging
+                    kubectl rollout status deployment/frontend-app --namespace=staging
+                    '''
+                }
+            }
+        }
+        stage('Run Tests on Staging') {
+            steps {
+                script {
+                    sh 'curl -f http://staging.example.com/health || exit 1'
+                }
+            }
+        }
+        stage('Deploy to Production') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    sh '''
+                    kubectl set image deployment/frontend-app frontend-app=umeshgayashan/frontend-app-image --namespace=production
+                    kubectl rollout status deployment/frontend-app --namespace=production
+                    '''
                 }
             }
         }
